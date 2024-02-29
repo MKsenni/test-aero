@@ -3,7 +3,8 @@
   "extends": [
     "next/core-web-vitals",
     "airbnb",
-    "airbnb-typescript"
+    "airbnb-typescript",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -26,10 +27,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": [
-          "**/*.test.ts",
-          "**/*.test.tsx"
-        ]
+        "devDependencies": ["**/*.test.ts", "**/*.test.tsx"]
       }
     ]
   }
