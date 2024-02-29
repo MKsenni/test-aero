@@ -10,7 +10,7 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
-                    'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       flex: {
         'default-card': '1 1 5%',
@@ -56,10 +56,12 @@ module.exports = {
         },
         flyClouds: {
           from: {
-            transform: 'rotate(-0.001deg) translate3d(12px, 48px, 0) rotate(-0.001deg)',
+            transform:
+              'rotate(-0.001deg) translate3d(12px, 48px, 0) rotate(-0.001deg)',
           },
           to: {
-            transform: 'rotate(360.001deg) translate3d(12px, 48px, 0) rotate(-360.001deg)',
+            transform:
+              'rotate(360.001deg) translate3d(12px, 48px, 0) rotate(-360.001deg)',
           },
         },
       },

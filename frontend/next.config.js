@@ -1,12 +1,12 @@
-  /** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
   compiler: {
     removeConsole: !!process.env.NODE_ENV,
   },
-    compress: true,
+  compress: true,
   env: {
-    API_URL: process.env.API_URL
+    API_URL: process.env.API_URL,
   },
   images: {
     formats: ['image/webp'],
@@ -36,7 +36,7 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-  }
-}
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

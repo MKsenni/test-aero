@@ -20,8 +20,14 @@ export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/kvartiry/dvuhkomnakomnatniye/')) {
     return NextResponse.redirect(new URL('/kvartiry', request.url));
   }
-  if (request.nextUrl.pathname.startsWith('/proekty/divny-kvartal-u-ozera/khod-stroitelstva/')) {
-    return NextResponse.redirect(new URL('/projects/divnyi-kvartal-u-ozera', request.url));
+  if (
+    request.nextUrl.pathname.startsWith(
+      '/proekty/divny-kvartal-u-ozera/khod-stroitelstva/'
+    )
+  ) {
+    return NextResponse.redirect(
+      new URL('/projects/divnyi-kvartal-u-ozera', request.url)
+    );
   }
   if (request.nextUrl.pathname.startsWith('/vacancii/')) {
     return NextResponse.redirect(new URL('/about', request.url));
@@ -35,13 +41,19 @@ export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/sposoby-pokupki/rassrochka/')) {
     return NextResponse.redirect(new URL('/purchases/raasrocka', request.url));
   }
-  if (request.nextUrl.pathname.startsWith('/sposoby-pokupki/materinskiy-kapital/')) {
-    return NextResponse.redirect(new URL('/purchases/materinskii-kapital', request.url));
+  if (
+    request.nextUrl.pathname.startsWith('/sposoby-pokupki/materinskiy-kapital/')
+  ) {
+    return NextResponse.redirect(
+      new URL('/purchases/materinskii-kapital', request.url)
+    );
   }
   if (request.nextUrl.pathname.startsWith('/partneram/')) {
     return NextResponse.redirect(new URL('/about', request.url));
   }
-  if (request.nextUrl.pathname.startsWith('/proekty/motivy/khod-stroitelstva/')) {
+  if (
+    request.nextUrl.pathname.startsWith('/proekty/motivy/khod-stroitelstva/')
+  ) {
     return NextResponse.redirect(new URL('/projects/motivy', request.url));
   }
   if (request.nextUrl.pathname.startsWith('/kommertsiya/')) {
@@ -53,8 +65,14 @@ export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/politika-konfidentsialnosti/')) {
     return NextResponse.redirect(new URL('/about', request.url));
   }
-  if (request.nextUrl.pathname.startsWith('/proekty/divny-kvartal-u-ozera/o-proekte/')) {
-    return NextResponse.redirect(new URL('/projects/divnyi-kvartal-u-ozera', request.url));
+  if (
+    request.nextUrl.pathname.startsWith(
+      '/proekty/divny-kvartal-u-ozera/o-proekte/'
+    )
+  ) {
+    return NextResponse.redirect(
+      new URL('/projects/divnyi-kvartal-u-ozera', request.url)
+    );
   }
   if (request.nextUrl.pathname.startsWith('/proekty/')) {
     return NextResponse.redirect(new URL('/projects', request.url));
@@ -65,8 +83,14 @@ export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/kvartiry/trehkomnakomnatniye/')) {
     return NextResponse.redirect(new URL('/kvartiry', request.url));
   }
-  if (request.nextUrl.pathname.startsWith('/proekty/divny-kvartal-u-ozera/kontakty/')) {
-    return NextResponse.redirect(new URL('/projects/divnyi-kvartal-u-ozera', request.url));
+  if (
+    request.nextUrl.pathname.startsWith(
+      '/proekty/divny-kvartal-u-ozera/kontakty/'
+    )
+  ) {
+    return NextResponse.redirect(
+      new URL('/projects/divnyi-kvartal-u-ozera', request.url)
+    );
   }
   if (request.nextUrl.pathname.startsWith('/kvartiry/studii/')) {
     return NextResponse.redirect(new URL('/kvartiry', request.url));

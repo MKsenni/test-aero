@@ -1,9 +1,10 @@
-import React from 'react'
+import { useQueryStateResult } from '@/redux/hook';
+import React from 'react';
 
 const Counter = () => {
-  return (
-    <div>Найдено 245 квартир</div>
-  )
-}
+  const { data } = useQueryStateResult(1);
 
-export default Counter
+  return <div>Найдено {data?.meta.total} квартир</div>;
+};
+
+export default Counter;
