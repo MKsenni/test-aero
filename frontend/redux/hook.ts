@@ -8,5 +8,6 @@ export const useAppDispatch: () => AppDispatch = useDispatch;
 
 export const useGetProjectsQuery = filterApi.endpoints.getProjects.useQuery;
 export const useGetPlansQuery = filterApi.endpoints.getPlans.useQuery;
+export const useGetProjectQuery = filterApi.endpoints.getProject.useQuery;
 
 export const useQueryStateResult = filterApi.endpoints.getPlans.useQueryState;

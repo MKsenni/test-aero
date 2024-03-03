@@ -14,7 +14,11 @@ const Square = ({ squareis }: { squareis?: SquaresRes }) => {
         id={squareInputId}
         className="border border-grey rounded-base text-lg px-6 py-4"
       >
-        <InputValue min={squareis?.min} max={squareis?.max} />
+        {squareis ? (
+          <InputValue min={squareis?.min} max={squareis?.max} />
+        ) : (
+          <p>Выбор площади отсутствует</p>
+        )}
       </div>
     </div>
   );

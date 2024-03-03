@@ -28,8 +28,15 @@ export default HomePage;
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context: GetServerSidePropsContext) => {
-    await store.dispatch(filterApi.endpoints.getProjects.initiate(1));
-    await store.dispatch(filterApi.endpoints.getPlans.initiate(1));
+    const project = context.query.search;
+    if (typeof project === 'string') {
+      await store.dispatch(
+        filterApi.endpoints.getProject.initiate({ project: project, page: 1 })
+      );
+    } else {
+      await store.dispatch(filterApi.endpoints.getProjects.initiate(1));
+      await store.dispatch(filterApi.endpoints.getPlans.initiate(1));
+    }
     await Promise.all(store.dispatch(getRunningQueriesThunk()));
 
     return { props: {} };

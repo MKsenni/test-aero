@@ -1,12 +1,29 @@
 'use client';
 import { ProjectRes } from '@/lib/data/types';
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
+import router from 'next/router';
+import { useProjectContext } from '@/pages/api/context';
 
 const Projects = ({ projects }: { projects: ProjectRes[] | undefined }) => {
   const filterInputId = useId();
-  const titles = projects?.filter((item) => item.title);
+  const [projectId, setProject] = useState('');
+  const { setProjectId } = useProjectContext();
 
-  const [projectVal, setProject] = useState('orange');
+  const applySearchWord = (searchIdProject: string | null) => {
+    searchIdProject
+      ? router.push({
+          pathname: '/',
+          query: { search: `${projectId}`, page: '1' },
+        })
+      : router.push({
+          pathname: '/',
+          query: { page: '1' },
+        });
+  };
+  useEffect(() => {
+    applySearchWord(projectId);
+    setProjectId(projectId);
+  }, [projectId]);
 
   return (
     <div className="flex flex-col gap-3 flex-1">
@@ -14,7 +31,7 @@ const Projects = ({ projects }: { projects: ProjectRes[] | undefined }) => {
         Проект
       </label>
       <div className="px-6 border border-grey rounded-base">
-        {titles && (
+        {projects ? (
           <select
             id={filterInputId}
             className="py-4 text-lg w-full focus:outline-none"
@@ -24,12 +41,14 @@ const Projects = ({ projects }: { projects: ProjectRes[] | undefined }) => {
             <option className="w-full" value="all">
               Все
             </option>
-            {titles.map((title, idx) => (
-              <option key={idx} className="w-full" value={title.title}>
-                {title.title}
+            {projects.map((item) => (
+              <option key={item.id} className="w-full" value={item.id}>
+                {item.title}
               </option>
             ))}
           </select>
+        ) : (
+          <p>Проекты отсутствуют</p>
         )}
       </div>
     </div>

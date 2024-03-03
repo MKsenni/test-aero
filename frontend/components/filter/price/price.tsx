@@ -14,7 +14,11 @@ const Price = ({ prices }: { prices: PricesRes | undefined }) => {
         id={priceInputId}
         className="border border-grey rounded-base text-lg px-6 py-4"
       >
-        <InputValue min={prices?.min} max={prices?.max} />
+        {prices ? (
+          <InputValue min={prices?.min} max={prices?.max} />
+        ) : (
+          <p>Выбор цены отсутствует</p>
+        )}
       </div>
     </div>
   );

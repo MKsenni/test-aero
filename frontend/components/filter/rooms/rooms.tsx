@@ -13,7 +13,7 @@ const Rooms = ({ rooms }: { rooms?: RoomsRes[] }) => {
         Укажите количество комнат
       </label>
       <div className="flex justify-start flex-1 xl:gap-5 gap-2">
-        {roomsArr &&
+        {roomsArr ? (
           roomsArr.map((room, idx) => {
             switch (room.number) {
               case 0:
@@ -29,7 +29,10 @@ const Rooms = ({ rooms }: { rooms?: RoomsRes[] }) => {
               default:
                 return <p>no results</p>;
             }
-          })}
+          })
+        ) : (
+          <p>Выбор количества комнат отсутствует</p>
+        )}
       </div>
     </div>
   );

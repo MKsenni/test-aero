@@ -19,11 +19,16 @@ export const filterApi = createApi({
     getPlans: build.query<PlansRes, number>({
       query: (page: number) => `/flats?page=${page}&per_page=9`,
     }),
+    getProject: build.query<PlansRes, { project: string; page: number }>({
+      query: ({ project, page }) =>
+        `/flats?f[projects][]=${project}&page=${page}&per_page=9`,
+    }),
   }),
 });
 
 export const {
   useGetProjectsQuery,
   useGetPlansQuery,
+  useGetProjectQuery,
   util: { getRunningQueriesThunk },
 } = filterApi;
