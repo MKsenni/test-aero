@@ -1,6 +1,7 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
 import { MakeStore, createWrapper } from 'next-redux-wrapper';
 import { filterApi } from './filterApi';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 export const store = configureStore({
   reducer: {
@@ -9,6 +10,8 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(filterApi.middleware),
 });
+
+setupListeners(store.dispatch);
 
 export const makeStore: MakeStore<typeof store> = () => store;
 

@@ -17,15 +17,15 @@ const Rooms = ({ rooms }: { rooms?: RoomsRes[] }) => {
           roomsArr.map((room, idx) => {
             switch (room.number) {
               case 0:
-                return <Room key={idx} value={RoomsType.ST} number={0} />;
+                return <Room key={idx} value={RoomsType.ST} room={'0'} />;
               case 1:
-                return <Room key={idx} value={RoomsType.ONE} number={1} />;
+                return <Room key={idx} value={RoomsType.ONE} room={'1'} />;
               case 2:
-                return <Room key={idx} value={RoomsType.TWO} number={2} />;
+                return <Room key={idx} value={RoomsType.TWO} room={'2'} />;
               case 3:
-                return <Room key={idx} value={RoomsType.THREE} number={3} />;
+                return <Room key={idx} value={RoomsType.THREE} room={'3'} />;
               case 4:
-                return <Room key={idx} value={RoomsType.FOUR} number={4} />;
+                return <Room key={idx} value={RoomsType.FOUR} room={'4'} />;
               default:
                 return <p>no results</p>;
             }

@@ -19,9 +19,12 @@ export const filterApi = createApi({
     getPlans: build.query<PlansRes, number>({
       query: (page: number) => `/flats?page=${page}&per_page=9`,
     }),
-    getProject: build.query<PlansRes, { project: string; page: number }>({
-      query: ({ project, page }) =>
-        `/flats?f[projects][]=${project}&page=${page}&per_page=9`,
+    getProject: build.query<
+      PlansRes,
+      { project?: string; page: number; rooms?: string[]; pricesMin?: string }
+    >({
+      query: ({ project, page, rooms, pricesMin }) =>
+        `/flats?${project ? `f[projects][]=${project}` : ''}${rooms ? rooms.map((item) => `&f[rooms][]=${item}`).join('&') : ''}&${pricesMin ? `f[price][min]=${pricesMin}&` : ''}page=${page}&per_page=9`,
     }),
   }),
 });

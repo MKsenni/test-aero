@@ -29,9 +29,32 @@ export default HomePage;
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context: GetServerSidePropsContext) => {
     const project = context.query.search;
+    const room = context.query.room;
+    const pricesMin = context.query.pricesMin;
     if (typeof project === 'string') {
       await store.dispatch(
         filterApi.endpoints.getProject.initiate({ project: project, page: 1 })
+      );
+      if (typeof room === 'object') {
+        await store.dispatch(
+          filterApi.endpoints.getProject.initiate({
+            project: project,
+            page: 1,
+            rooms: room,
+          })
+        );
+      } else if (typeof pricesMin === 'string') {
+        await store.dispatch(
+          filterApi.endpoints.getProject.initiate({
+            project: project,
+            page: 1,
+            pricesMin: pricesMin,
+          })
+        );
+      }
+    } else if (typeof room === 'object') {
+      await store.dispatch(
+        filterApi.endpoints.getProject.initiate({ page: 1, rooms: room })
       );
     } else {
       await store.dispatch(filterApi.endpoints.getProjects.initiate(1));

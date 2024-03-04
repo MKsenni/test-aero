@@ -1,7 +1,16 @@
-import { formattedNum } from '@/lib/utils/utils';
 import React, { useState } from 'react';
 
-const InputValue = ({ min, max }: { min?: number; max?: number }) => {
+const InputValue = ({
+  min,
+  max,
+  setMin,
+  setMax,
+}: {
+  min?: number;
+  max?: number;
+  setMin: (minValue: string) => void;
+  setMax: (maxValue: string) => void;
+}) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
 
@@ -11,10 +20,13 @@ const InputValue = ({ min, max }: { min?: number; max?: number }) => {
         <span>от</span>
         <input
           type="text"
-          size={min?.toString().length}
-          value={formattedNum(Number(minVal))}
-          name={'name'}
-          onChange={(e) => setMinVal(Number(e.target.value))}
+          value={minVal?.toLocaleString()}
+          name="minValue"
+          onChange={(e) => {
+            const cleanedValue = e.target.value.replace(/\s/g, '');
+            setMinVal(Number(cleanedValue));
+            setMin(cleanedValue);
+          }}
         />
       </div>
       <span className="border border-grey w-5"></span>
@@ -22,10 +34,13 @@ const InputValue = ({ min, max }: { min?: number; max?: number }) => {
         <span>до</span>
         <input
           type="text"
-          size={max?.toString().length}
-          value={formattedNum(Number(maxVal))}
-          name={'name'}
-          onChange={(e) => setMaxVal(Number(e.target.value))}
+          value={maxVal?.toLocaleString()}
+          name="maxValue"
+          onChange={(e) => {
+            const cleanedValue = e.target.value.replace(/\s/g, '');
+            setMaxVal(Number(cleanedValue));
+            setMax(cleanedValue);
+          }}
         />
       </div>
     </div>

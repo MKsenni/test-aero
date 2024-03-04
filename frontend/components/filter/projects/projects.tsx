@@ -21,8 +21,10 @@ const Projects = ({ projects }: { projects: ProjectRes[] | undefined }) => {
         });
   };
   useEffect(() => {
-    applySearchWord(projectId);
-    setProjectId(projectId);
+    if (projectId !== 'all') {
+      applySearchWord(projectId);
+      setProjectId(projectId);
+    }
   }, [projectId]);
 
   return (
@@ -35,7 +37,7 @@ const Projects = ({ projects }: { projects: ProjectRes[] | undefined }) => {
           <select
             id={filterInputId}
             className="py-4 text-lg w-full focus:outline-none"
-            defaultValue="Все"
+            defaultValue="all"
             onChange={(e) => setProject(e.target.value)}
           >
             <option className="w-full" value="all">

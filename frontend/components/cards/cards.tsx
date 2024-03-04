@@ -1,16 +1,27 @@
 import React, { useEffect } from 'react';
 import Card from './card/card';
 import { useGetPlansQuery, useGetProjectQuery } from '@/redux/hook';
-import { useProjectContext } from '@/pages/api/context';
-import { useState } from 'react';
-import { PlansRes } from '@/lib/data/types';
+import { usePriceMinContext, useProjectContext, useRoomsContext } from '@/pages/api/context';
+import router from 'next/router';
 
 const Cards = () => {
   const { data } = useGetPlansQuery(1);
   const { projectId } = useProjectContext();
+  const { rooms } = useRoomsContext();
+  const {priceMin} = usePriceMinContext();
+
+  useEffect(() => {
+    router.push({
+      pathname: '/',
+      query: { search: `${projectId}`, room: rooms, pricesMin: `${priceMin}`, page: '1' },
+    });
+  }, [rooms]);
+
   const { data: projectData } = useGetProjectQuery({
-    project: projectId ? projectId : '',
+    project: projectId ?? '',
     page: 1,
+    rooms: rooms,
+    pricesMin: priceMin ?? '',
   });
 
   return (
